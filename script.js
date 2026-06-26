@@ -301,7 +301,7 @@ function initializeBoard() {
   renderBoardArt();
   resetPipeClasses();
   resetMapHighlights();
-
+ 
   pipes.forEach((pipe, index) => {
     const rotation = getScrambledRotation(targetRotations[index], solutionPath.includes(index));
     rotations[index] = rotation;
