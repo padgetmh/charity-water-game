@@ -279,8 +279,12 @@ function celebrateGoalTile() {
 }
 
 function resetMapHighlights() {
-  sourceNode.classList.remove("source-active");
-  villageNode.classList.remove("village-watered");
+  if (sourceNode) {
+    sourceNode.classList.remove("source-active");
+  }
+  if (villageNode) {
+    villageNode.classList.remove("village-watered");
+  }
 }
 
 function resetPipeClasses() {
@@ -435,13 +439,15 @@ function evaluatePath() {
 }
 
 function animateWater(path) {
-  sourceNode.classList.add("source-active");
+  if (sourceNode) {
+    sourceNode.classList.add("source-active");
+  }
 
   path.forEach((index, order) => {
     setTimeout(() => {
       pipes[index].classList.remove("path-preview");
       pipes[index].classList.add("watered");
-      if (index === path.length - 1) {
+      if (index === path.length - 1 && villageNode) {
         villageNode.classList.add("village-watered");
       }
     }, order * 160);
