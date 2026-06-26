@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Water Connect | charity: water Puzzle Game</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+	<header class="topbar">
+		<div class="brand-block">
+			<img src="images/charity-water-logo.png" class="brand-logo" alt="charity: water logo">
+			<div>
+				<p class="eyebrow">charity: water presents</p>
+				<h1>Water Connect</h1>
+			</div>
+		</div>
+
+		<div class="hud" aria-label="Game progress">
+			<div class="hud-item">
+				<span class="hud-label">Level</span>
+				<span id="level" class="hud-value">1</span>
+			</div>
+			<div class="hud-item">
+				<span class="hud-label">Score</span>
+				<span id="score" class="hud-value">0</span>
+			</div>
+			<div class="hud-item">
+				<span class="hud-label">Moves Left</span>
+				<span id="moves" class="hud-value">0</span>
+			</div>
+		</div>
+
+		<div class="header-actions">
+			<button id="startBtn">Start</button>
+			<button id="resetBtn" class="secondary">Reset</button>
+		</div>
+	</header>
+
+	<main id="gameMap" aria-label="Water pipeline map">
+		<img src="images/background.jpg" class="map" alt="Landscape map leading to a village">
+		<div class="map-shade" aria-hidden="true"></div>
+
+		<div class="map-label source-label">Water Source</div>
+		<div class="map-label village-label">Village Well</div>
+		<div class="landmark-glow source-glow" aria-hidden="true"></div>
+		<div class="landmark-glow village-glow" aria-hidden="true"></div>
+		<div class="landmark-pin source-pin" aria-hidden="true">Start</div>
+		<div class="landmark-pin village-pin" aria-hidden="true">Goal</div>
+
+
+		<div id="pipesLayer" aria-label="Pipeline"></div>
+
+		<section id="introOverlay" class="overlay-card">
+			<p class="overlay-kicker">Mission</p>
+			<h2>Connect clean water to the village.</h2>
+			<p>Rotate each pipe to complete the route. Dirty pipes break the connection and cost points.</p>
+			<button id="overlayStartBtn">Start Flow</button>
+		</section>
+
+		<section class="status-panel">
+			<p id="message" aria-live="polite">Press Start to open the water line to the village.</p>
+		</section>
+
+		<section id="winScreen" class="overlay-card hidden">
+			<p class="overlay-kicker">Village receives clean water!</p>
+			<h2>Pipeline Restored</h2>
+			<div class="stars" aria-label="Three star victory">★★★</div>
+			<div class="win-stats">
+				<div>
+					<span class="hud-label">Score</span>
+					<strong id="finalScore">0</strong>
+				</div>
+				<div>
+					<span class="hud-label">Moves</span>
+					<strong id="finalMoves">0</strong>
+				</div>
+			</div>
+			<button id="nextLevel">Next Level</button>
+		</section>
+
+		<section id="loseScreen" class="overlay-card hidden">
+			<p class="overlay-kicker">Mission Failed</p>
+			<h2>You ran out of moves.</h2>
+			<p>Using more than 13 moves loses the round and costs 3 points. Reset and try a cleaner route.</p>
+			<button id="retryBtn">Try Again</button>
+		</section>
+
+		<section id="infoPopup" class="overlay-card hidden">
+			<p class="overlay-kicker">Clean Water Fact</p>
+			<h2>Unsafe water spreads disease.</h2>
+			<p>Contaminated water can carry harmful bacteria and parasites. Safe water systems help protect families, schools, and clinics.</p>
+			<button id="closeInfoBtn">Continue</button>
+		</section>
+	</main>
+</div>
+
+<audio id="rotateSound">
+<source src="sounds/rotate.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="winSound">
+<source src="sounds/win.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>
